@@ -1,0 +1,35 @@
+'''
+Given an array of numbers representing the stock prices of a company in chronological order, write a function that calculates
+the maximum profit you could have made from buying and selling that stock once. You must buy before you sell.
+
+Example: given [9,11,8,5,7,10], you should return 5, since you could buy the stock at 5 and sell at 10.
+'''
+def max_profit(s1):
+    max1 = s1[0]
+    max_index = 0
+    index1 = 0
+    for x in s1:
+        if x > max1:
+            max1 = x
+            max_index = index1
+        index1 += 1
+
+    min1 = s1[0]
+    min_index = 0
+    index2 = 0
+    for z in s1:
+        if z < min1:
+            min1 = z
+            min_index = index2
+        if index2 == max_index:
+            break
+        index2 += 1
+
+
+    return(max1-min1)
+
+
+
+print(f'Max Profit: {max_profit([3,15,12,23,5,2])}')
+
+# Output -- Max Profit: 20

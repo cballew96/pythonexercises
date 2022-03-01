@@ -1,0 +1,16 @@
+'''
+finds the fibonacci sequence based on n -- if n is 5 then fib returns the 5th number in the sequence
+'''
+
+def fib(n):
+    first = 0
+    second = 1
+    index = 0
+
+    while index < n:
+        first, second = second, first + second
+        index += 1
+    print(first)
+fib(14)
+
+# Output 377

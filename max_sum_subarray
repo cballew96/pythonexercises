@@ -1,0 +1,50 @@
+'''
+Given an array of numbers, find the maximum sum of any contiguous subarray of the array.
+max_sum_subarray([1,2,3,2])) # max sub array should be 7 -- 2+3+2 = 7
+max_sum_subarray([34,-50,42,14,-5,86])) # max sub array should be 137 -- 42+14+-5+86 = 137
+max_sum_subarray([-34,-50,-42,-14,-5,-86])) # max sub array should be 0 -- subarray < 0 = 0
+'''
+
+def max_sum_subarray(n):
+    ele_index = 0
+    x = 0
+    y = 0
+    subarraysum = 0
+    total = 0
+    sum = 0
+
+    for ele in n:
+        x = ele_index
+        y = x + 1
+        if y == len(n):
+            break
+        subarraysum = n[x] + n[y]
+        #print(subarraysum)
+        while True:
+            y += 1
+            # if the sum is bigger then the subarraysum then subarraysum = sum
+            # looping through the subarrays and comparing sums along the way
+            if y >= len(n):
+                break
+            if x == 0 and y == 3:
+                break
+            subarraysum = subarraysum + n[y]
+            if subarraysum > sum:
+                sum = subarraysum
+
+            #print(subarraysum)
+
+        if sum > total:
+            total = sum
+        sum = 0
+            #y += 1
+        # index to keep track of what index the ele value is at in the list
+        ele_index += 1
+    if total < 0:
+        return 0
+    else:
+        return total
+
+#print(max_sum_subarray([1,2,3,2])) # max sub array should be 7
+#print(max_sum_subarray([34,-50,42,14,-5,86])) # max sub array should be 137
+#print(max_sum_subarray([-34,-50,-42,-14,-5,-86])) # max sub array should be 0

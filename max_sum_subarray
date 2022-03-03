@@ -28,6 +28,8 @@ def max_sum_subarray(n):
                 break
             if x == 0 and y == 3:
                 break
+            if subarraysum > sum:
+                sum = subarraysum
             subarraysum = subarraysum + n[y]
             if subarraysum > sum:
                 sum = subarraysum
@@ -45,6 +47,6 @@ def max_sum_subarray(n):
     else:
         return total
 
-#print(max_sum_subarray([1,2,3,2])) # max sub array should be 7
-#print(max_sum_subarray([34,-50,42,14,-5,86])) # max sub array should be 137
-#print(max_sum_subarray([-34,-50,-42,-14,-5,-86])) # max sub array should be 0
+print(max_sum_subarray([1,-2, 3,-3,-2])) # max sub array should be 7
+print(max_sum_subarray([34,-50,42,14,-5,86])) # max sub array should be 137
+print(max_sum_subarray([-34,-50,-42,-14,-5,-86])) # max sub array should be 0

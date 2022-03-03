@@ -26,7 +26,7 @@ def max_sum_subarray(n):
             # looping through the subarrays and comparing sums along the way
             if y >= len(n):
                 break
-            if x == 0 and y == 3:
+            if x == 0 and y == len(n)-1:
                 break
             if subarraysum > sum:
                 sum = subarraysum

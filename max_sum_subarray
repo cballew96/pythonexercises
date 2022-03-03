@@ -26,6 +26,8 @@ def max_sum_subarray(n):
             # looping through the subarrays and comparing sums along the way
             if y >= len(n):
                 break
+            # if you are at the first element in the list and 'y' is at the end of the list -- break out
+            # this keeps from returning the whole array instead of returning a subarray
             if x == 0 and y == len(n)-1:
                 break
             if subarraysum > sum:

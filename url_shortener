@@ -1,0 +1,19 @@
+class UrlShortener:
+    url_list = []
+
+    def shorten(self, url):
+        if len(url) < 6:
+            return None
+        else:
+            UrlShortener.url_list.append(url[-6::])
+            UrlShortener.url_list.append(url)
+            #print(UrlShortener.url_list)
+
+    def restore(self, short):
+        return UrlShortener.url_list.pop()
+
+
+url1 = UrlShortener()
+
+x = (url1.shorten('https://thispointer.com/python-how-to-get-last-n-characters-in-a-string/'))
+print(url1.restore(x))

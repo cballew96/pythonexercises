@@ -5,9 +5,10 @@ class Solution(object):
         size = 0
         for val in s:
             if val in longest:
-                size = len(longest)
+                #size = len(longest)
                 if len(longest) > len(flongest):
                     flongest = longest
+                    size = len(longest)
 
                 longest = '' + val
             else:

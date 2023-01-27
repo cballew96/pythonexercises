@@ -1,50 +1,63 @@
 # has problems with two of the same transcation
 
 
+class Solution(object):
+    def invalidTransactions(self, transactions):
+        invalid = []
+        # removing transactions that have amount > 1000 - needs to be put in an invalid transactions list
+        count = 0
+        # print(l3)
+        for val in transactions:
+            # print(val)
+            if int((val.split(',')[2])) > 1000:
+                invalid = invalid + [transactions[count]]
+                transactions.remove(transactions[count])
+                # print(l3)
+            count += 1
 
-def invalid_transactions():
+        # splits the transaction string list after every comma into an entry in a list
+        count = 0
+        l3_split = []
+        for val in transactions:
+            l3_split += (transactions[count].split(','))
+            count += 1
+        print(l3_split)
 
-    # removing transactions that have amount > 1000 - needs to be put in an invalid transactions list
-    count = 0
-    #print(l3)
-    for val in l3:
-        # print(val)
-        if int((val.split(',')[2])) > 1000:
-            l3.remove(l3[count])
-            #print(l3)
-        count += 1
+        name = 0
+        index = 4
 
-    # splits the transaction string list after every comma into an entry in a list
-    count = 0
-    l3_split = []
-    for val in l3:
-        l3_split += (l3[count].split(','))
-        count += 1
-    print(l3_split)
+        # finds invalid transactions
+        while name + 4 < len(l3_split) + 1:
+            while index + 4 < len(l3_split) + 1:
+                # invalid transaction checker
+                if l3_split[name] == l3_split[index] and abs(
+                        int(l3_split[name + 1]) - int(l3_split[index + 1])) <= 60 and l3_split[name + 3] != l3_split[
+                    index + 3]:
 
-    name = 0
-    index = 4
-    invalid = []
-    # finds invalid transactions
-    while name+4 < len(l3_split)+1:
-        while index+4 < len(l3_split)+1:
-            if l3_split[name] == l3_split[index] and abs(int(l3_split[name+1]) - int(l3_split[index+1])) <= 60 and l3_split[name+3] != l3_split[index+3]:
-                #print('This is an invalid transaction')
-                #print(l3_split[name] + ',' + l3_split[name+1] + ',' +  l3_split[name+2] + ',' + l3_split[name+3])
-                #print(invalid)
+                     # building the strings to add to the invalid list
+                    if l3_split[name] + ',' + l3_split[name + 1] + ',' + l3_split[name + 2] + ',' + l3_split[
+                        name + 3] not in invalid:
+                        invalid = invalid + [
+                            l3_split[name] + ',' + l3_split[name + 1] + ',' + l3_split[name + 2] + ',' + l3_split[
+                                name + 3]]
+                    if l3_split[index] + ',' + l3_split[index + 1] + ',' + l3_split[index + 2] + ',' + l3_split[
+                        index + 3] not in invalid:
+                        invalid = invalid + [
+                            l3_split[index] + ',' + l3_split[index + 1] + ',' + l3_split[index + 2] + ',' + l3_split[
+                                index + 3]]
 
-                if l3_split[name] + ',' + l3_split[name+1] + ',' +  l3_split[name+2] + ',' + l3_split[name+3] not in invalid:
-                    invalid = invalid + [l3_split[name] + ',' + l3_split[name+1] + ',' + l3_split[name+2] + ',' + l3_split[name+3]]
-                if l3_split[index] + ',' + l3_split[index+1] + ',' + l3_split[index+2] + ',' + l3_split[index+3] not in invalid:
-                    invalid = invalid + [l3_split[index] + ',' + l3_split[index + 1] + ',' + l3_split[index + 2] + ',' + l3_split[index + 3]]
+                    index += 4
+                # checking for good transcations
+                elif l3_split[name] == l3_split[index] and (
+                        abs(int(l3_split[name + 1]) - int(l3_split[index + 1])) > 60 or l3_split[name + 3] == l3_split[
+                    index + 3]):
+                    # print('This transaction shares the same name but is a valid transaction!')
+                    index += 4
+                else:
+                    index += 4
+            name += 4
+            index = name + 4
+        return invalid
 
-                index += 4
-            elif l3_split[name] == l3_split[index] and (abs(int(l3_split[name+1]) - int(l3_split[index+1])) > 60 or l3_split[name+3] == l3_split[index+3]):
-                #print('This transaction shares the same name but is a valid transaction!')
-                index += 4
-            else:
-                index += 4
-        name += 4
-        index = name + 4
-    print(invalid)
-invalid_transactions()
+c1 = Solution()
+print(c1.invalidTransactions(["alice,20,800,mtv","bob,20,1100,bejing","alice,40,400,bejing","alice,50,400,texas","bob,50,400,texas","bob,70,400,texas"]))

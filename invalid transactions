@@ -1,3 +1,7 @@
+# has problems with two of the same transcation
+
+
+
 def invalid_transactions():
 
     # removing transactions that have amount > 1000 - needs to be put in an invalid transactions list

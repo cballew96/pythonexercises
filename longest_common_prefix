@@ -1,0 +1,30 @@
+# returns the longest common prefix from strings in a list
+
+
+
+class Solution(object):
+    def longestCommonPrefix(self, words):
+        index = 1
+        while True:
+            if index > len(words[0]):
+                break
+            prefix = words[0][:index]
+            for val in words[1:]:
+                if prefix == val[:index]:
+                    pass
+                    #print(f'{prefix}, {val}')
+                else:
+                    break
+            if prefix != val[:index]:
+                prefix = words[0][:index-1]
+                break
+            index += 1
+        if prefix == '':
+            prefix = ""
+        return prefix
+
+
+c10 = Solution()
+
+print(c10.longestCommonPrefix(['flew', 'flowers', 'flex'])) # returns 'fl'
+print(c10.longestCommonPrefix(['dog', 'racecar', 'car'])) # returns empty string -- no common prefixes

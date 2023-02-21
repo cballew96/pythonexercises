@@ -1,0 +1,19 @@
+class Solution(object):
+    def singleNonDuplicate(self, nums):
+        d1 = {}
+        for val in nums:
+            if val in d1:
+                #print(d1)
+                d1[val] += 1
+                #print(d1)
+            else:
+                d1[val] = 1
+        element = 0
+        for val, elements in d1.items():
+            if elements == 1:
+                element = val
+                break
+        return element
+
+c11 = Solution()
+print(c11.singleNonDuplicate([3,3,7,7,10,11,11]))

@@ -1,0 +1,19 @@
+# A very slow sort
+
+class Solution(object):
+    def sortArray(self, nums):
+        index = 0
+        index1 = 1
+        if len(nums) == 1:
+            return nums
+        else:
+            while index < len(nums):
+                if nums[index] > nums[index1]:
+                    nums[index], nums[index1] = nums[index1], nums[index]
+                if index1 + 1 < len(nums):
+                    index1 += 1
+                else:
+                    index += 1
+                    index1 = index
+
+        return nums

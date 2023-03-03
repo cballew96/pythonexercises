@@ -1,0 +1,23 @@
+# returns the first index of the first occurence of a string
+
++class Solution():
+    def strStr(self, haystack, needle):
+        index = 0
+        count = 0
+        while count != 1 and count != -1:
+            #print(index)
+            if haystack[index] == needle[0]:
+                if haystack[index:index + len(needle)] == needle:
+                    count = 1
+                    return index
+                    break
+
+            index += 1
+            #print(index, len(haystack))
+            if index == len(haystack):
+                count = -1
+                return count
+
+
+t4 = Solution()
+print(t4.strStr('sadbutsad', 'sad')) # returns 0 bc the first occurence of sad happened at index 0

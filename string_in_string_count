@@ -1,0 +1,15 @@
+# returns how many times a string is inside another string
+
+s1 = 'sad'
+s2 = 'sadbutsad'
+
+index = 0
+count = 0
+while index < len(s2):
+    if s2[index] == s1[0]:
+        if s2[index:index+len(s1)] == s1:
+            print('s1 is in s2')
+            count += 1
+    index += 1
+    
+print(count) # prints 2 because s1 is in s2 2 times

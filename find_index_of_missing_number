@@ -1,0 +1,19 @@
+# takes a list and a number and returns the index of the number thats missing from the list
+# example: [1,2,3,4] and 2
+# missing numbers are [5,6,7,8....1000]
+# 6 is the 2nd number in the missing numbers list
+
+
+class Solution(object):
+    def findKthPositive(self, arr, k):
+
+        l1 = [x for x in range(1,1001)]
+
+        for val in arr:
+            if val in l1:
+                l1.remove(val)
+        print(len(l1))
+        return l1[k-1]
+
+t5 = Solution()
+print(t5.findKthPositive([1,2,3,4], 2))
